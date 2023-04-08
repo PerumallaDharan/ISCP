@@ -4,7 +4,7 @@ arr = []
 for i in range(0,n):
     arr.append(int(input("Enter element = ")))
 max=arr[0]
-for i in range(0,n):
-    if arr[0]<arr[i]:
+for i in range(1,n):
+    if arr[i] > max:
         max=arr[i]
 print("Maximum element = ", max)
