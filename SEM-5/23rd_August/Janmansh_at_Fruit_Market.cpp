@@ -1,12 +1,13 @@
 // Problem
-// Janmansh is at the fruit market to buy fruits for Chingari. There is an infinite supply of three 
+// Janmansh is at the fruit market to buy fruits for Chingari. There is an infinite supply of three
 // different kinds of fruits with prices A, B and C.
-// He needs to buy a total of X fruits having at least 2 different kinds of fruits. What is the least 
+// He needs to buy a total of X fruits having at least 2 different kinds of fruits. What is the least
 // amount of money he can spend to buy fruits?
 
 // Input Format
-// The first line of the input contains a single integer T - the number of test cases. The description of T test cases follows.
-// The first and only line of each test case contains four space separated integers X, A, B, C - the number 
+// The first line of the input contains a single integer T - the number of test cases. The description of T test cases 
+// follows.
+// The first and only line of each test case contains four space separated integers X, A, B, C - the number
 // of fruits to buy and the prices of the three different types of fruits respectively.
 
 // Output Format
@@ -31,30 +32,23 @@
 // Test case-2: He can buy 1 fruit of price 3 and 2 fruits of price 2 for a total price of 7.
 
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
-int main(){
+int main()
+{
     int t;
     cin >> t;
     while (t--)
     {
-        int x,a,b,c;
-        cin >> x >> a >> b >> c;
-        int min = 1000000000;
-        if (a<min && a<b && a<c)
+        int x, arr[3];
+        cin >> x;
+        for (int i = 0; i < 3; i++)
         {
-            min = a;
+            cin >> arr[i];
         }
-        else if(b<min && b<a && b<c)
-        {
-            min = b;
-        }
-        else if(c<min && c<a && c<b)
-        {
-            min = c;
-        }
-        int count = 0;
-        
+        sort(arr, arr + 3);
+        cout << (x - 1) * arr[0] + 1 * arr[1] << endl;
     }
-    
+    return 0;
 }
