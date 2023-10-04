@@ -1,10 +1,10 @@
 // Problem
-// Grapes of Coderpur are very famous. Devu went to the market and saw that there were N people selling grapes. 
-// He didn’t like it because things were not very structured. So, he gave a task to Dhinwa to make things better. 
+// Grapes of Coderpur are very famous. Devu went to the market and saw that there were N people selling grapes.
+// He didn’t like it because things were not very structured. So, he gave a task to Dhinwa to make things better.
 // If Dhinwa successfully completes the task, Devu will be happy.
-// Devu wants to change the number of grapes in a bucket of zero or more sellers in such a way that the GCD of 
-// all the number of grapes is divisible by K. Dhinwa can add or remove any number of grapes from each of the buckets. 
-// Adding or removing a grape will be counted as an operation. Also after the operation, none of the seller’s bucket 
+// Devu wants to change the number of grapes in a bucket of zero or more sellers in such a way that the GCD of
+// all the number of grapes is divisible by K. Dhinwa can add or remove any number of grapes from each of the buckets.
+// Adding or removing a grape will be counted as an operation. Also after the operation, none of the seller’s bucket
 // should be empty.
 // Help Dhinwa in finding the minimum number of operations needed to make Devu happy.
 
@@ -38,31 +38,42 @@
 // Explanation:
 // For the first test case, add or remove 1 grape in each of the bucket.
 
-// For the second test case, remove three grapes in the first bucket, 
+// For the second test case, remove three grapes in the first bucket,
 // remove two grapes from the second bucket and add three grapes in the third bucket.
 
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main(){
-    int t;
-    cin>>t;
-    while(t--){
-        int n,k;
-        cin>>n>>k;
-        int arr[n];
-        int count=0;
-        for(int i=0;i<n;i++){
-            cin>>arr[i];
-            if(arr[i]%k!=0){
-                if(arr[i]>k){
-                    count+=min(arr[i]%k,k-(arr[i]%k));
-                }
-                else{
-                    count+=k-arr[i];
-                }
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    unsigned long long t = 0;
+    cin >> t;
+
+    while (t--)
+    {
+        unsigned long long n = 0, k = 0, r = 0, c = 0;
+        cin >> n >> k;
+        vector<unsigned long long> v(n);
+        for (unsigned long long i = 0; i < n; i++)
+        {
+            cin >> v[i];
+        }
+        for (unsigned long long i = 0; i < n; i++)
+        {
+            r = v[i] % k;
+            if (v[i] >= k)
+            {
+                c += min(r, k - r);
+            }
+            else
+            {
+                c += k - r;
             }
         }
-        cout<<count<<endl;
+        cout << c << "\n";
     }
+    return 0;
 }
